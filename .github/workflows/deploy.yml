@@ -3,7 +3,7 @@ name: Deploy
 # 觸發時機，當推送到分支 master 時
 on:
   push:
-    branches: [ master ]
+    branches: [master]
 # 執行的工作
 jobs:
   # 工作名稱
@@ -16,6 +16,10 @@ jobs:
       - name: checkout
         # 使用的 actions/checkout 複製程式碼
         uses: actions/checkout@v2.3.1
+      - name: setup node
+        uses: action/setup-node@v2
+        with:
+          node-version: "17.0.0"
       # 步驟二：編譯
       - name: Install and Build
         run: |
